@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for digitalia_muni_view_limit module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+function digitalia_muni_view_limit_views_query_alter(\Drupal\views\ViewExecutable $view, \Drupal\views\Plugin\views\query\QueryPluginBase $query){
+  if($view->id() == 'dk_ff_books_in_series'){
+    $facet_value = $_GET['f']; 
+    if (empty($facet_value)) {
+      $view->getPager()->setItemsPerPage(50);
+    }
+  }
+}
